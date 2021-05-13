@@ -1,0 +1,79 @@
+<ion-toolbar>
+  <ion-buttons slot="end">
+    <ion-button (click)="goToSignUp()">
+      Sign Up
+    </ion-button>
+  </ion-buttons>
+  <ion-title></ion-title>
+</ion-toolbar>
+
+
+
+
+
+
+
+
+
+
+<ion-content slot="fixed">
+
+  <ion-grid fixed style="margin-top: 150px; ">
+    <ion-row>
+      <ion-col size="12" size-md="5" offset-md="3">
+
+
+
+
+
+
+
+        <ion-card>
+
+          <ion-card-header>
+            <ion-card-title style="text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 35px;">LOGIN</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-img src="/assets/login.jpg"></ion-img>
+
+            <form  #formulario ="ngForm" (ngSubmit)="onSubmit(formulario)">
+
+              <div style="height: 23px;">
+
+              </div>
+            
+            
+              <ion-item>
+                <ion-label>User: </ion-label>
+                <ion-input type="user" 
+                style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"
+                placeholder="escribe aqui" 
+                name="user" 
+                [(ngModel)]="usuario.user"
+                required></ion-input>
+              </ion-item>
+            
+              <ion-item>
+                <ion-label>Password:</ion-label>
+                <ion-input type="password" placeholder="escribe aqui" 
+                style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"
+                          name="password" [(ngModel)] ="usuario.password" required></ion-input>
+              </ion-item>
+            
+              <ion-button [disabled]="formulario.invalid" type="submit" expand="block" fill="clear" shape="round">
+                Ingresar
+              </ion-button>
+            
+            </form>
+     
+          </ion-card-content>
+        </ion-card>
+
+
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
