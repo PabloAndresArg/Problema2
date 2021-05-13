@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { BtnBackComponent } from './btn-back.component';
+import { HeaderAdminComponent } from './header-admin.component';
 
-describe('BtnBackComponent', () => {
-  let component: BtnBackComponent;
-  let fixture: ComponentFixture<BtnBackComponent>;
+describe('HeaderAdminComponent', () => {
+  let component: HeaderAdminComponent;
+  let fixture: ComponentFixture<HeaderAdminComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BtnBackComponent ],
+      declarations: [ HeaderAdminComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(BtnBackComponent);
+    fixture = TestBed.createComponent(HeaderAdminComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

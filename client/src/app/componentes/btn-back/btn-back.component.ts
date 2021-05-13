@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-btn-back',
@@ -7,8 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BtnBackComponent implements OnInit {
   @Input() titulo: string= '';
-  constructor() { }
+  @Input() rutaBack: string= '';
+  constructor(private router: Router) { }
 
   ngOnInit() {}
+  regresar(){
+   this.router.navigate(['/'+this.rutaBack]);
+  }
 
 }

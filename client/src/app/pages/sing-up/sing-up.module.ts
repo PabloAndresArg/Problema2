@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SingUpPageRoutingModule } from './sing-up-routing.module';
 
 import { SingUpPage } from './sing-up.page';
-import { ComponentesModule } from 'src/app/componentes/componentes/componentes.module';
+import { ComponentesModule } from 'src/app/componentes/componentes.module';
 
 @NgModule({
   imports: [
