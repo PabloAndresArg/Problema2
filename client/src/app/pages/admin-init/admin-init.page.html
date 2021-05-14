@@ -1,16 +1,11 @@
 
 
-  <app-header-admin [titulo]="'Panel'"></app-header-admin>
-
-
-
-
-
+<app-header-admin [titulo]="'Panel'"></app-header-admin>
 
 <ion-content fullscreen>
   <ion-list>
 
-    <ion-item (click)="goToSignUP()"  *ngFor="let enc of   encuestas">
+    <ion-item *ngFor="let enc of   encuestas">
       <ion-icon slot="start"  name="bookmarks" ></ion-icon>
       <ion-label>
         <h3>{{enc.id}}. {{enc.nombre}} </h3>

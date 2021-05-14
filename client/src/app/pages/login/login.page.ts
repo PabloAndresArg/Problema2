@@ -34,6 +34,7 @@ export class LoginPage implements OnInit {
             localStorage.setItem('password', res[0].password);
             localStorage.setItem('nombre', res[0].nombre);
             this.alertMessage('Login OK', res[0].nombre, 'success');
+            this.router.navigate(['/cliente-init']);
           }
         },
         err => {
@@ -53,7 +54,8 @@ export class LoginPage implements OnInit {
         title: Titulo,
         text: mensaje,
         icon: 'error',
-        timer: 1500
+        timer: 1500,
+        showConfirmButton:false
 
       })
     } else {
@@ -61,7 +63,8 @@ export class LoginPage implements OnInit {
         title: Titulo,
         text: mensaje,
         icon: 'success',
-        timer: 1500
+        timer: 1500,
+        showConfirmButton:false
       })
     }
 

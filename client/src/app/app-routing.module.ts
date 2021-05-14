@@ -18,6 +18,14 @@ const routes: Routes = [
   {
     path: 'modalrespuestas',
     loadChildren: () => import('./pages/modalrespuestas/modalrespuestas.module').then( m => m.ModalrespuestasPageModule)
+  },
+  {
+    path: 'cliente-init',
+    loadChildren: () => import('./pages/cliente-init/cliente-init.module').then( m => m.ClienteInitPageModule)
+  },
+  {
+    path: 'cuestionario/:id',
+    loadChildren: () => import('./pages/cuestionario/cuestionario.module').then( m => m.CuestionarioPageModule)
   }
 ];
 
