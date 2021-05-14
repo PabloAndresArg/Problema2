@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { user } from 'src/app/Interfaces/interfaces';
+import { Router } from '@angular/router';
+import { User } from 'src/app/Interfaces/interfaces';
+import { AdminService } from 'src/app/services/admin.service';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -9,25 +11,27 @@ import Swal from 'sweetalert2'
   styleUrls: ['./sing-up.page.scss'],
 })
 export class SingUpPage implements OnInit {
-  usuario:user ={
+  usuario:User ={
     nombre:""
     ,password:"",
     username:""
   };
-  constructor() { }
+  constructor(private s_admin : AdminService , private router: Router) { }
 
   ngOnInit() {
+    let username = localStorage.getItem('username');
+    if (username.toLowerCase() != 'admin'){
+      this.router.navigate(['/login']);
+    }
   }
   onSubmit(formulario: NgForm){
     console.log(formulario);// en controls estan los input con los nombre sque pusimos en el name en el html
     console.log(this.usuario);
 
-    if (this.usuario.password.toLocaleLowerCase() == 'admin' && this.usuario.username.toLocaleLowerCase() == 'admin'){
-        this.alertMessage('ok' , 'Bienvenido Administrador' , 'success');
- 
-    }else{ // reviso en la base de datos
-        this.alertMessage('error' , 'credenciales incorrectas')
-    }
+  this.s_admin.crearUsuario(this.usuario).subscribe( res =>{
+    console.log(res);
+    this.alertMessage("ok","usuario creado","success");
+  }, err=>{ console.log(err); this.alertMessage("error","usuario repetido")})
   }
 
 

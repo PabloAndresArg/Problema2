@@ -9,48 +9,48 @@
         <ion-card>
 
           <ion-card-header>
-            <ion-card-title style="text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 25px;">NUEVO USUARIO</ion-card-title>
+            <ion-card-title style="text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 25px; padding-top: 5px; padding-inline-end: 4px;">NUEVO USUARIO</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
 
-            <form  #formulario ="ngForm" (ngSubmit)="onSubmit(formulario)">
+            <form  #formulario ="ngForm" (ngSubmit)="onSubmit(formulario)" class="fondo" >
 
               <div style="height: 23px;">
 
               </div>
             
             
-              <ion-item>
+              <ion-item style="padding-left: 7px; padding-right: 7px; padding-top: 4px; padding-bottom: 4px;">
                 <ion-label>User: </ion-label>
                 <ion-input type="text" 
                 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"
                 placeholder="escribe aqui" 
                 name="user" 
-                [(ngModel)]="usuario.username"
+                [(ngModel)]="usuario.username" class="ion-padding"
                 required></ion-input>
               </ion-item>
             
-              <ion-item>
+           <ion-item style="padding-left: 7px; padding-right: 7px; padding-top: 4px; padding-bottom: 4px;">
                 <ion-label>Password:</ion-label>
-                <ion-input type="password" placeholder="escribe aqui" 
-                style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"
+                <ion-input type="password" placeholder="" 
+                style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;" class="ion-padding"
                           name="password" [(ngModel)] ="usuario.password" required></ion-input>
               </ion-item>
 
 
                          
-              <ion-item>
+           <ion-item style="padding-left: 7px; padding-right: 7px; padding-top: 4px; padding-bottom: 4px; margin-bottom: 20px;">
                 <ion-label>Nombre: </ion-label>
                 <ion-input type="text" 
                 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"
-                placeholder="escribe aqui" 
-                name="user" 
+                placeholder="escribe aqui" class="ion-padding"
+                name="nombre" 
                 [(ngModel)]="usuario.nombre"
                 required></ion-input>
               </ion-item>
             
-              <ion-button [disabled]="formulario.invalid" type="submit" expand="block" fill="clear" shape="round">
+              <ion-button [disabled]="formulario.invalid" type="submit" expand="block"  >
                 Registrar
               </ion-button>
             

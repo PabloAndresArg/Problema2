@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { BtnBackComponent } from './btn-back/btn-back.component';
 
-import {RegistroComponent} from './registro/registro.component';
+
 import {HeaderAdminComponent} from './header-admin/header-admin.component';
 
 
@@ -11,13 +11,13 @@ import {HeaderAdminComponent} from './header-admin/header-admin.component';
   declarations: [
    BtnBackComponent,
    HeaderAdminComponent,
-   RegistroComponent
+
    
   ],
   exports: [
     BtnBackComponent,
     HeaderAdminComponent,
-    RegistroComponent
+
   ],
   imports: [
     CommonModule,

@@ -10,10 +10,10 @@
 <ion-content fullscreen>
   <ion-list>
 
-    <ion-item (click)="goToSignUP()" >
-      <ion-icon slot="start"  name="heart" ></ion-icon>
+    <ion-item (click)="goToSignUP()"  *ngFor="let enc of   encuestas">
+      <ion-icon slot="start"  name="bookmarks" ></ion-icon>
       <ion-label>
-        <h3>ver encuestas </h3>
+        <h3>{{enc.id}}. {{enc.nombre}} </h3>
       </ion-label>
     </ion-item>
 
