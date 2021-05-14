@@ -3,10 +3,51 @@
 
 
 
-<ion-slides  [options]="slideOpts">
-  <ion-slide *ngFor="let pregunta of preguntas">
-  <ion-card>
-    
+
+
+  <ion-card *ngFor="let pregunta of preguntas ; let i = index" >
+
+    <ion-card-header>
+      <ion-card-title style="text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 35px;">
+        {{pregunta.pregunta}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-img src="/assets/pregunta.jpg">
+    </ion-img>
+
+    <ion-list>
+  
+
+
+        <div *ngIf="!(pregunta.tipo_pregunta)">
+          <ion-item *ngFor="let respuesta of pregunta.Respuestas" >
+            <ion-label>{{respuesta.respuesta}}</ion-label>
+          </ion-item>
+       
+        </div>
+
+      
+
+
+      <div *ngIf="(pregunta.tipo_pregunta)">
+        <ion-item>
+          <ion-textarea  type="text" 
+          style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"
+          placeholder="escribe la respuesta aqui" 
+          name="respuesta" 
+          class="ion-padding"
+          required></ion-textarea >
+        </ion-item>
+      </div>
+
+    </ion-list>
+
+    <ion-button (click)="responder(i)" expand="block" fill="clear" shape="round">
+      {{i+1}}. responder
+    </ion-button>
+
+
+    </ion-card-content>
   </ion-card>
-  </ion-slide>
-</ion-slides>
+

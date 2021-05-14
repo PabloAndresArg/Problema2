@@ -33,3 +33,13 @@ export interface PreguntaActual{
         // 3 cosas necesarias para crear una pregunta
         Respuestas?: Respuesta[];  // strings
 }
+
+export interface PosibleRespuesta{
+        id ?: number;
+        pregunta?: string ;
+        tipo_pregunta?: number;
+        id_encuesta?: number;
+        id_respuesta?: number;
+        respuestaCorrecta?: number;
+        respuesta: string;
+}

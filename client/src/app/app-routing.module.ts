@@ -24,8 +24,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/cliente-init/cliente-init.module').then( m => m.ClienteInitPageModule)
   },
   {
-    path: 'cuestionario/:id',
+    path: 'cuestionario/:id/:encuesta',
     loadChildren: () => import('./pages/cuestionario/cuestionario.module').then( m => m.CuestionarioPageModule)
+  },
+  {
+    path: 'modal-cliente',
+    loadChildren: () => import('./pages/modal-cliente/modal-cliente.module').then( m => m.ModalClientePageModule)
   }
 ];
 

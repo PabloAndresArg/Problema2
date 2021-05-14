@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/Interfaces/interfaces';
+//import { User } from 'src/app/Interfaces/interfaces';
 import { AdminService } from 'src/app/services/admin.service';
 import Swal from 'sweetalert2'
 
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2'
   styleUrls: ['./sing-up.page.scss'],
 })
 export class SingUpPage implements OnInit {
-  usuario:User ={
+  usuario:any ={
     nombre:""
     ,password:"",
     username:""
@@ -19,10 +19,7 @@ export class SingUpPage implements OnInit {
   constructor(private s_admin : AdminService , private router: Router) { }
 
   ngOnInit() {
-    let username = localStorage.getItem('username');
-    if (username.toLowerCase() != 'admin'){
-      this.router.navigate(['/login']);
-    }
+
   }
   onSubmit(formulario: NgForm){
     console.log(formulario);// en controls estan los input con los nombre sque pusimos en el name en el html

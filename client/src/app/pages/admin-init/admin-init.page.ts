@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Encuesta } from 'src/app/Interfaces/interfaces';
+//import { Encuesta } from 'src/app/Interfaces/interfaces';
 import { AdminService } from 'src/app/services/admin.service';
 
 
@@ -12,7 +12,7 @@ import { AdminService } from 'src/app/services/admin.service';
 export class AdminInitPage implements OnInit {
 
   constructor(private router: Router , private s_admin: AdminService) { }
-  encuestas : Encuesta[] = [];
+  encuestas : any[] = [];
   ngOnInit() {
     this.s_admin.getAllEncuestas().subscribe(
       res=>{

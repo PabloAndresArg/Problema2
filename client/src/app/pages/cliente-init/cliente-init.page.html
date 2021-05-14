@@ -12,7 +12,7 @@
   </ion-card-content>
   <ion-card-subtitle style="margin-left: 10%; margin-right: 10%;">Selecciona el Quizz de tu preferencia con tan solo un <p style="color: skyblue;">click</p> </ion-card-subtitle>
 </ion-card>
-    <ion-item  *ngFor="let enc of   encuestas"  (click)="goToCuestionario(enc.id)">
+    <ion-item  *ngFor="let enc of   encuestas"  (click)="goToCuestionario(enc.id , enc.nombre)">
       <ion-icon slot="start"  name="bookmarks" ></ion-icon>
       <ion-label>
         <h3>{{enc.id}}. {{enc.nombre}} </h3>

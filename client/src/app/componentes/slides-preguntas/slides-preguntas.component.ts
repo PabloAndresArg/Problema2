@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Pregunta, PreguntaActual, Respuesta } from 'src/app/Interfaces/interfaces';
+import {  PreguntaActual} from 'src/app/Interfaces/interfaces';
+import { ModalClientePage } from 'src/app/pages/modal-cliente/modal-cliente.page';
 
 @Component({
   selector: 'app-slides-preguntas',
@@ -8,33 +9,30 @@ import { Pregunta, PreguntaActual, Respuesta } from 'src/app/Interfaces/interfac
   styleUrls: ['./slides-preguntas.component.scss'],
 })
 export class SlidesPreguntasComponent implements OnInit {
-  @Input() preguntas: Pregunta[] =[];
-  respuestas:Respuesta[] = [];
-  slideOpts ={
-    slidesPerView: 3.3 // para que muestre un poco del otro
-    , 
-    freeMode: true
-  }
+  @Input() preguntas: any[] = [];
+
+
   constructor(private modalCtrl: ModalController) { }
 
-  ngOnInit() {}
-
-  async verDetalle(id: string){
-/*
-    const modal = this.modalCtrl.create(
-      {
-        component:DetalleComponent,
-        componentProps:{ // esto se lo manda al hijo 
-
-          id: id
-        }
-      }
-  );
-
-    (await modal).present();
+  ngOnInit() {
+    console.log("ONNINIT" , this.preguntas)
+  }
 
 
-  */
+
+  async responder(i: number) {
+
+    /*    const modal = this.modalCtrl.create(
+          {
+            component:ModalClientePage,
+            componentProps:{ // esto se lo manda al hijo 
+              pregunta: this.preguntas[i]
+            }
+          }
+      );
+    
+        (await modal).present();*/
+    
   }
 
 

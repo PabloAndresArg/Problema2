@@ -11,7 +11,7 @@
             ></ion-back-button>
         </ion-buttons>
 
-    <ion-title class="ion-text-capitalize">Cuestionario</ion-title>
+    <ion-title class="ion-text-capitalize">{{this.nombre_encuesta}}</ion-title>
 
     <ion-button slot="end" class="margen" (click)="closeSession()">
       <ion-icon slot="icon-only" name="exit"></ion-icon>
@@ -22,5 +22,9 @@
 </ion-header>
 
 <ion-content>
+
+  <app-slides-preguntas [preguntas]="this.todas_las_preguntas" >
+
+  </app-slides-preguntas>
 
 </ion-content>

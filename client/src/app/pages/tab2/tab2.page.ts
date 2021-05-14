@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { Encuesta, Pregunta, PreguntaActual } from 'src/app/Interfaces/interfaces';
+//import { Encuesta, Pregunta, PreguntaActual } from 'src/app/Interfaces/interfaces';
 import { AdminService } from 'src/app/services/admin.service';
 import Swal from 'sweetalert2';
 import { ModalrespuestasPage } from '../modalrespuestas/modalrespuestas.page';
@@ -12,11 +12,11 @@ import { ModalrespuestasPage } from '../modalrespuestas/modalrespuestas.page';
   styleUrls: ['./tab2.page.scss'],
 })
 export class Tab2Page implements OnInit {
-  encuesta: Encuesta = { nombre: '' }
+  encuesta: any = { nombre: '' }
 
-  encuestas: Encuesta[] = [];
+  encuestas: any[] = [];
 
-  preguntaActual: PreguntaActual = { pregunta: '', tipo_pregunta: 0 }
+  preguntaActual: any = { pregunta: '', tipo_pregunta: 0 }
 
 
   constructor(private s_admin: AdminService, private modalCtrl: ModalController) { }

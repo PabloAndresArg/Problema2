@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { Pregunta, PreguntaActual, Respuesta } from 'src/app/Interfaces/interfaces';
+//import { Pregunta, PreguntaActual, Respuesta } from 'src/app/Interfaces/interfaces';
 import { AdminService } from 'src/app/services/admin.service';
 import Swal from 'sweetalert2';
 
@@ -11,10 +11,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./modalrespuestas.page.scss'],
 })
 export class ModalrespuestasPage implements OnInit {
-  @Input() preguntaActual: PreguntaActual;
+  @Input() preguntaActual: any;
 
 
-  respuesta: Respuesta = { respuesta: "", respuestaCorrecta: 0 };
+  respuesta: any = { respuesta: "", respuestaCorrecta: 0 };
 
   isNewQuestion = true;
   id_pregunta = 0;
@@ -41,7 +41,7 @@ export class ModalrespuestasPage implements OnInit {
       this.preguntaActual.tipo_pregunta).subscribe(res => {
          if (res.length ==0 ){
           if (this.preguntaActual.Respuestas.length != 0) {
-            let pre: Pregunta = { pregunta: this.preguntaActual.pregunta, tipo_pregunta: this.preguntaActual.tipo_pregunta, id_encuesta: this.preguntaActual.id_encuesta }
+            let pre: any = { pregunta: this.preguntaActual.pregunta, tipo_pregunta: this.preguntaActual.tipo_pregunta, id_encuesta: this.preguntaActual.id_encuesta }
             this.s_admin.crearPregunta(pre).subscribe(
               res => {
                 this.s_admin.getUltimaPreguntaCreada().subscribe(
