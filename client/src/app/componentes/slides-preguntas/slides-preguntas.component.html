@@ -5,9 +5,11 @@
 
 
 
-  <ion-card *ngFor="let pregunta of preguntas ; let i = index" >
 
-    <ion-card-header>
+
+  <ion-card *ngFor="let pregunta of preguntas ; let i = index"  >
+    <div *ngIf="!pregunta.respondida">
+    <ion-card-header >
       <ion-card-title style="text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 35px;">
         {{pregunta.pregunta}}</ion-card-title>
     </ion-card-header>
@@ -21,10 +23,10 @@
 
 
         <div *ngIf="!(pregunta.tipo_pregunta)">
-          <ion-item *ngFor="let respuesta of pregunta.Respuestas" >
-            <ion-label>{{respuesta.respuesta}}</ion-label>
+          <ion-item style="padding-left: 7px; padding-right: 7px; padding-top: 4px; padding-bottom: 4px;"  *ngFor="let respuesta of pregunta.Respuestas" >
+            <ion-label [color]="respuesta.color" >{{respuesta.respuesta}}</ion-label>
+            <ion-checkbox name="respuestaCorrecta" [color]="respuesta.color"  (ionChange)="cambio(respuesta)"></ion-checkbox>
           </ion-item>
-       
         </div>
 
       
@@ -37,17 +39,26 @@
           placeholder="escribe la respuesta aqui" 
           name="respuesta" 
           class="ion-padding"
+          [(ngModel)]="pregunta.respuestaDirecta"
           required></ion-textarea >
         </ion-item>
       </div>
 
     </ion-list>
 
-    <ion-button (click)="responder(i)" expand="block" fill="clear" shape="round">
+    <ion-button  *ngIf="!pregunta.resultados"  (click)="responder(i)" expand="block" fill="clear" shape="round">
       {{i+1}}. responder
     </ion-button>
 
+    <ion-button  *ngIf="pregunta.resultados" (click)="quitar(i)" expand="block" fill="clear" shape="round">
+      {{i+1}}. Quitar
+    </ion-button>
+
+   
+
 
     </ion-card-content>
+
+  </div>
   </ion-card>
 

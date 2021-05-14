@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'modal-cliente',
     loadChildren: () => import('./pages/modal-cliente/modal-cliente.module').then( m => m.ModalClientePageModule)
+  },
+  {
+    path: 'logros',
+    loadChildren: () => import('./pages/logros/logros.module').then( m => m.LogrosPageModule)
   }
 ];
 

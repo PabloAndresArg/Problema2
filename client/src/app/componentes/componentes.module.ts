@@ -6,6 +6,7 @@ import { BtnBackComponent } from './btn-back/btn-back.component';
 
 import {HeaderAdminComponent} from './header-admin/header-admin.component';
 import { SlidesPreguntasComponent } from './slides-preguntas/slides-preguntas.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -24,7 +25,9 @@ import { SlidesPreguntasComponent } from './slides-preguntas/slides-preguntas.co
   ],
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule,
+    FormsModule,
+
   ]// agrego el modulo para usar cosas de ionic
 })
 export class ComponentesModule { }

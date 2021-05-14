@@ -24,7 +24,7 @@ export class CuestionarioPage implements OnInit {
     this.service.getAllPreguntasPorEncuesta(this.id_encuesta).subscribe(
       res=>{
         this.todas_las_preguntas = res;
-        console.log(this.todas_las_preguntas)
+        console.log("retorna " , this.todas_las_preguntas)
       },
       err=>{
         console.log("TODAS LAS PREGUNTAS",err)
@@ -34,24 +34,24 @@ export class CuestionarioPage implements OnInit {
     this.service.getAllRespuestasEncuesta(this.id_encuesta).subscribe(
       res=>{
         this.respuestasPosibles = res;
-        
+
 
         for (let i = 0; i < this.todas_las_preguntas.length; i++) {
           this.todas_las_preguntas[i].Respuestas = [];
           for (let x = 0; x < this.respuestasPosibles.length; x++) {
     
             if (this.todas_las_preguntas[i].id == this.respuestasPosibles[x].id && this.todas_las_preguntas[i].pregunta == this.respuestasPosibles[x].pregunta) {
-              console.log(this.todas_las_preguntas[i].pregunta , "== " , this.respuestasPosibles[x].respuesta);
+              //console.log(this.todas_las_preguntas[i].pregunta , "== " , this.respuestasPosibles[x].respuesta);
               this.todas_las_preguntas[i].Respuestas.push(
                 {
-                  id: this.respuestasPosibles[x].id_respuesta, respuesta: this.respuestasPosibles[x].respuesta,
+                  ID_PRE: this.respuestasPosibles[x].ID_PRE, respuesta: this.respuestasPosibles[x].respuesta,
                   id_pregunta: this.respuestasPosibles[x].id, respuestaCorrecta: this.respuestasPosibles[x].respuestaCorrecta
                 });
             }
           }
         }
 
-        console.log("A VER :  " , this.todas_las_preguntas)
+      //  console.log("A VER :  " , this.todas_las_preguntas)
       },
       err=>{
         console.log("RESPEUSTAS POSIBLES" , err)

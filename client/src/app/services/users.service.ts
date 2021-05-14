@@ -28,6 +28,13 @@ export class UsersService {
     return this.http.get<any[]>(`${this.url}/back/preguntas/getAllRespuestasEncuesta/${id}`);
   }
 
+
+  public GuardarRespuesta(username: any , cantidad_aciertos:any  , cantidad_fallos: any , id_pregunta: any ){ 
+
+    return this.http.post(`${this.url}/back/ClienteRespuesta/save` ,{username: username ,cantidad_aciertos:cantidad_aciertos , cantidad_fallos: cantidad_fallos  ,id_pregunta : id_pregunta  } );
+  }
+
+
  
 
 
