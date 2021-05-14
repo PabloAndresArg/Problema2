@@ -34,6 +34,20 @@ export class UsersService {
     return this.http.post(`${this.url}/back/ClienteRespuesta/save` ,{username: username ,cantidad_aciertos:cantidad_aciertos , cantidad_fallos: cantidad_fallos  ,id_pregunta : id_pregunta  } );
   }
 
+  public GuardarRespuestaDirecta(username: any , cantidad_aciertos:any  , cantidad_fallos: any , id_pregunta: any  , repuestaDirecta: any){ 
+
+    return this.http.post(`${this.url}/back/ClienteRespuesta/save` ,{username: username ,cantidad_aciertos:cantidad_aciertos , cantidad_fallos: cantidad_fallos  ,id_pregunta : id_pregunta  , repuestaDirecta : repuestaDirecta } );
+  }
+
+
+
+  public getLogrosPorEncuesta(username , id_encuesta){
+    return this.http.get<any[]>(`${this.url}/back/logros/${username}/${id_encuesta}`);
+  }
+  
+
+
+
 
  
 

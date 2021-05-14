@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { LogrosPageRoutingModule } from './logros-routing.module';
 
 import { LogrosPage } from './logros.page';
+import { ComponentesModule } from 'src/app/componentes/componentes.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LogrosPageRoutingModule
+    LogrosPageRoutingModule,
+    ComponentesModule
   ],
   declarations: [LogrosPage]
 })

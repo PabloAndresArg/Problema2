@@ -42,6 +42,7 @@ export class SlidesPreguntasComponent implements OnInit {
     this.alertMessage("OK" , "calificando la pregunta" , "success");
     let respuestaCorrectaDirecta = 0; 
      let msg = "";
+     let mi_respuesta = ""; 
     for (let x = 0; x < this.preguntas[i].Respuestas.length; x++) {
       if (this.preguntas[i].tipo_pregunta == 0 && this.preguntas[i].Respuestas[x].seleccionado && this.preguntas[i].Respuestas[x].respuestaCorrecta == 1) {
         this.preguntas[i].Respuestas[x].color="success"
@@ -55,11 +56,13 @@ export class SlidesPreguntasComponent implements OnInit {
       }else if (this.preguntas[i].tipo_pregunta == 1 && this.preguntas[i].Respuestas[x].respuestaCorrecta == 1  &&
         this.preguntas[i].respuestaDirecta == this.preguntas[i].Respuestas[x].respuesta ) {
         respuestaCorrectaDirecta = 1;
+        mi_respuesta = this.preguntas[i].respuestaDirecta;
         break;
   
       }else if (this.preguntas[i].tipo_pregunta == 1 && this.preguntas[i].Respuestas[x].respuestaCorrecta == 1  &&
         this.preguntas[i].respuestaDirecta != this.preguntas[i].Respuestas[x].respuesta ) {
         respuestaCorrectaDirecta = 0;
+        mi_respuesta = this.preguntas[i].respuestaDirecta;
         msg =  this.preguntas[i].Respuestas[x].respuesta ;
       }
     }
@@ -68,19 +71,29 @@ export class SlidesPreguntasComponent implements OnInit {
       if(respuestaCorrectaDirecta == 0 ){
         this.alertMessage(":(" , "lo siento la respuesta correcta era : "+ msg );
         this.fallos++;
+        
       }else{
         this.aciertos++;
         this.alertMessage("OK" , "Respuesta Correcta" , "success");
       }
+
+      this.service.GuardarRespuestaDirecta(localStorage.getItem('username') , this.aciertos , this.fallos, this.preguntas[i].ID_PRE , mi_respuesta).subscribe(
+        res=>{
+          console.log("SAVE",res);
+        
+        }, err=>console.log(err)
+      )
+    }else{
+      this.service.GuardarRespuesta(localStorage.getItem('username') , this.aciertos , this.fallos, this.preguntas[i].ID_PRE).subscribe(
+        res=>{
+          console.log("SAVE",res);
+        
+        }, err=>console.log(err)
+      )
     }
     // GUARDO LA RESPUESTA
 
-    this.service.GuardarRespuesta(localStorage.getItem('username') , this.aciertos , this.fallos, this.preguntas[i].ID_PRE).subscribe(
-      res=>{
-        console.log("SAVE",res);
-      
-      }, err=>console.log(err)
-    )
+
     this.aciertos = 0;
     this.fallos= 0;
 
@@ -89,7 +102,25 @@ export class SlidesPreguntasComponent implements OnInit {
 
   quitar(i:any){
     this.preguntas[i].respondida = "true";
+
+    if(this.ya_no_hay()){
+      Swal.fire({
+        icon:"info",
+        text:"Test Terminodo , puede encontrar mas informacion en sus logros",
+   
+      }
+      )
+    }
     // BUSCAR SI QUEDA ALGUNO CON RESPONDIDA EN FALSE SINO TERMINAR EL QUIZZ
+  }
+
+  ya_no_hay():Boolean{
+    for(let i = 0 ;  i < this.preguntas.length; i++){
+      if(this.preguntas[i].resultados == false || this.preguntas[i].resultados  == 'false' || this.preguntas[i].resultados == undefined){
+        return false;
+      }
+    }
+    return true;
   }
 
   alertMessage(Titulo, mensaje, icono = 'error') {

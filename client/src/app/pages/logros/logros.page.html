@@ -1,9 +1,84 @@
-<ion-header>
+<ion-header >
   <ion-toolbar>
-    <ion-title>logros</ion-title>
+
+    <ion-buttons  slot="start">
+      <!-- mode ios si quiero que se vea como en android , viceversa si pongo md -->
+        <ion-back-button
+            defaultHref="/"
+            text=""
+            color="primary"
+            mode="md"
+            ></ion-back-button>
+        </ion-buttons>
+
+    <ion-title class="ion-text-capitalize">LOGROS</ion-title>
+
+    <ion-button slot="end" class="margen" (click)="closeSession()">
+      <ion-icon slot="icon-only" name="exit"></ion-icon>
+    </ion-button>
+
+
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content>
+
+  <ion-card>
+  
+    <ion-card-header>
+  
+      <ion-item>
+        <ion-label>Selecciona la Encuesta</ion-label>
+        <ion-select placeholder="Select One"  name="id_encuesta"  [(ngModel)]  = "id_encuesta" (ionChange)="getLogros()">
+          <ion-select-option [value]="enc.id" *ngFor="let enc of encuestas" >{{enc.id}}.{{enc.nombre}} </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+
+      <ion-list>
+        
+
+          <ion-card *ngFor="let l of logros" >
+            <ion-label color="secondary">Pregunta:  
+              <p>
+              {{l.pregunta}}
+            </p></ion-label>
+
+            <br>
+            <ion-label *ngIf="l.tipo_pregunta ">Tipo Pregunta: abierta</ion-label>
+            <br>
+            <ion-label *ngIf="l.tipo_pregunta ">mi respuesta: {{l.repuestaDirecta}}</ion-label>
+            <ion-label *ngIf="!l.tipo_pregunta ">Tipo Pregunta: seleccion multiple</ion-label>
+            <br>
+            <ion-label>Aciertos: {{l.cantidad_aciertos}}</ion-label>
+            <br>
+            <ion-label>fallos:   {{l.cantidad_fallos}}</ion-label>
+            <br>
+            <ion-label>fecha:   {{l.fechaHora | date}}</ion-label>
+            <br>
+            <br>
+            <br>
+
+            
+          </ion-card>
+
+        
+
+
+
+      </ion-list>
+
+
+
+
+
+
+    </ion-card-header>
+  </ion-card>
+
+
+
 
 </ion-content>

@@ -29,6 +29,9 @@ export class ClienteInitPage implements OnInit {
     this.router.navigate(['/cuestionario', id , encuesta]);
   }
 
+  goToLogros(){
+    this.router.navigate(['/logros']);
+  }
 
 
 
